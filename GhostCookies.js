@@ -10937,36 +10937,37 @@ var __webpack_exports__ = {};
 // @require         https://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 
+var autoPlayerEnabled = true;
+var autoPlayerDelay = 200
+
+// Set autoClicker to true
+var autoClickerEnabled = true;
+var autoClickerDelay = 10;
+
+// Set auto click shimmers to true
+var autoClickShimmers = true;
+
+// Set global auto-buy to true
+var autoBuy = true;
+
+// Set specific auto-buy to true    
+var autoBuyUpgrades = true;
+var autoBuyProducts = true;
+
+// Set stop on buff to false
+var stopOnBuff = false;
+var buffActive = false;
+
+// Set console notifications to true
+var notifications = true;
+
+//set Kill Wrinklers to true
+var autoKillWrinklers = true
 (function () {
     $(document).ready(function () {
         setTimeout(function () {
             // Turn on extension
-            var autoPlayerEnabled = true;
-            var autoPlayerDelay = 200
 
-            // Set autoClicker to true
-            var autoClickerEnabled = true;
-            var autoClickerDelay = 10;
-
-            // Set auto click shimmers to true
-            var autoClickShimmers = true;
-
-            // Set global auto-buy to true
-            var autoBuy = true;
-
-            // Set specific auto-buy to true    
-            var autoBuyUpgrades = true;
-            var autoBuyProducts = true;
-
-            // Set stop on buff to false
-            var stopOnBuff = false;
-            var buffActive = false;
-
-            // Set console notifications to true
-            var notifications = true;
-
-            //set Kill Wrinklers to true
-            var autoKillWrinklers = true
 
             // Trigger help function from console
             help = help;
