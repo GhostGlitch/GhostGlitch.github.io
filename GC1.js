@@ -10937,37 +10937,37 @@ var __webpack_exports__ = {};
 // @require         https://code.jquery.com/jquery-latest.js
 // ==/UserScript==
 
-var autoPlayerEnabled = true;
-var autoPlayerDelay = 200
 
-// Set autoClicker to true
-var autoClickerEnabled = true;
-var autoClickerDelay = 10;
-
-// Set auto click shimmers to true
-var autoClickShimmers = true;
-
-// Set global auto-buy to true
-var autoBuy = true;
-
-// Set specific auto-buy to true    
-var autoBuyUpgrades = true;
-var autoBuyProducts = true;
-
-// Set stop on buff to false
-var stopOnBuff = false;
-var buffActive = false;
-
-// Set console notifications to true
-var notifications = true;
-
-//set Kill Wrinklers to true
-var autoKillWrinklers = true;
 (function () {
     $(document).ready(function () {
         setTimeout(function () {
             // Turn on extension
-
+            window.autoPlayerEnabled = true;
+            window.autoPlayerDelay = 200
+        
+            // Set autoClicker to true
+            window.autoClickerEnabled = true;
+            window.autoClickerDelay = 10;
+        
+            // Set auto click shimmers to true
+            window.autoClickShimmers = true;
+        
+            // Set global auto-buy to true
+            window.autoBuy = true;
+        
+            // Set specific auto-buy to true    
+            window.autoBuyUpgrades = true;
+            window.autoBuyProducts = true;
+        
+            // Set stop on buff to false
+            window.stopOnBuff = false;
+            window.buffActive = false;
+        
+            // Set console notifications to true
+            window.notifications = true;
+        
+            //set Kill Wrinklers to true
+            window.autoKillWrinklers = true;
 
             // Trigger help function from console
             help = help;
@@ -10982,40 +10982,40 @@ var autoKillWrinklers = true;
 
             // Show settings in console
             function settings() {
-                console.log("[=== Auto Player Settings ===]\n\nYou are currently using the following settings:\n\nautoPlayerEnabled = " + autoPlayerEnabled + "\nautoPlayerDelay = " + autoPlayerDelay + "\nautoClickerEnabled = " + autoClickerEnabled + "\nautoClickerDelay = " + autoClickerDelay + "\nautoClickShimmers = " + autoClickShimmers + "\nautoBuy = " + autoBuy + "\nautoBuyUpgrades = " + autoBuyUpgrades + "\nautoBuyProducts = " + autoBuyProducts + "\nautoKillWrinklers = " + autoKillWrinklers + "\nstopOnBuff = " + stopOnBuff + "\nnotifications = " + notifications + "\n\nYou can view your current settings with the settings() command and you can always call for help again with the help() command.");
+                console.log("[=== Auto Player Settings ===]\n\nYou are currently using the following settings:\n\nautoPlayerEnabled = " + autoPlayerEnabled + "\nautoPlayerDelay = " + autoPlayerDelay + "\nautoClickerEnabled = " + window.autoClickerEnabled + "\nautoClickerDelay = " + window.autoClickerDelay + "\nautoClickShimmers = " + window.autoClickShimmers + "\nautoBuy = " + window.autoBuy + "\nautoBuyUpgrades = " + window.autoBuyUpgrades + "\nautoBuyProducts = " + window.autoBuyProducts + "\nautoKillWrinklers = " + window.autoKillWrinklers + "\nstopOnBuff = " + window.stopOnBuff + "\nnotifications = " + window.notifications + "\n\nYou can view your current settings with the settings() command and you can always call for help again with the help() command.");
             }
 
             help();
 
             function clicker() {
-                if (autoClickerEnabled && autoPlayerEnabled && !Game.OnAscend) {
+                if (window.autoClickerEnabled && window.autoPlayerEnabled && !Game.OnAscend) {
                     Game.ClickCookie();
                 }
-                setTimeout(clicker, autoClickerDelay);
+                setTimeout(clicker, window.autoClickerDelay);
             }
 
             function loop() {
-                if (autoPlayerEnabled && !Game.OnAscend) {
-                    if (autoClickShimmers) {
+                if (window.autoPlayerEnabled && !Game.OnAscend) {
+                    if (window.autoClickShimmers) {
                         clickShimmers();
                     }
                     // Check if buff is finished and resume auto-buy
-                    buffActive = checkBuff(buffActive, stopOnBuff);
-                    if (autoBuy && !buffActive) {
+                    window.buffActive = checkBuff(window.buffActive, window.stopOnBuff);
+                    if (window.autoBuy && !window.buffActive) {
                         // Buy upgrades
-                        if (autoBuyUpgrades) {
+                        if (window.autoBuyUpgrades) {
                             buyUpgrade();
                         }
                         // Buy Products
-                        if (autoBuyProducts) {
+                        if (window.autoBuyProducts) {
                             buyProduct();
                         }
                     }
-                    if (autoKillWrinklers) {
+                    if (window.autoKillWrinklers) {
                         killWrinklers();
                     }
                 }
-                setTimeout(loop, autoPlayerDelay);
+                setTimeout(loop, window.autoPlayerDelay);
             }
 
             clicker()
@@ -11032,7 +11032,7 @@ function clickShimmers() {
         //        if(shimmer.type == "golden")
         //        {
         shimmer.pop()
-        if (notifications) {
+        if (window.notifications) {
             console.log("Shimmer clicked!");
         }
         //        }
@@ -11045,7 +11045,7 @@ function checkBuff(buffActive, stopOnBuff) {
         if (buffCrate.length > 0) {
             buffActive = true;
 
-            if (notifications) {
+            if (window.notifications) {
                 console.log("Auto-buy temporarily disabled during buff!");
             }
         }
@@ -11055,7 +11055,7 @@ function checkBuff(buffActive, stopOnBuff) {
         if (buffCrate.length == 0) {
             buffActive = false;
 
-            if (notifications) {
+            if (window.notifications) {
                 console.log("Auto-buy enabled again!");
             }
         }
@@ -11073,7 +11073,7 @@ function buyUpgrade() {
             upgradeColors[index] = upgrades.children().eq(index).attr("class").slice(6);
         });
     } catch (e) {
-        if (notifications) {
+        if (window.notifications) {
             console.log("Minor Error, if you know how to fix let me know. Line 144 of Auto Player for CM:", e.name, e.message);
         }
     }
@@ -11087,7 +11087,7 @@ function buyUpgrade() {
     function checkColorU(i, color) {
         if (upgradeColors[i] == color && $(upgrades[i]).hasClass("enabled")) {
             $(upgrades[i]).click();
-            if (notifications) {
+            if (window.notifications) {
                 console.log(color + " Upgrade bought!");
             }
         }
@@ -11128,7 +11128,7 @@ function buyProduct() {
     // After a buff or when your window was inactive may buys the best product when using short numbers. 14 trillion is in that case less than 400 billion (14 < 400).
     if (cheapest != "") {
         cheapest.click();
-        if (notifications) {
+        if (window.notifications) {
             let productTitle = cheapest.find(".title");
             if (productTitle.find("span").length > 0) {
                 console.log(productTitle.find("span").html() + " nr." + cheapest.find(".title.owned").html() + " bought!");
