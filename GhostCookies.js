@@ -10999,7 +10999,7 @@ var __webpack_exports__ = {};
                         clickShimmers();
                     }
                     // Check if buff is finished and resume auto-buy
-                    buffActive = checkBuff(buffActive);
+                    buffActive = checkBuff(buffActive, stopOnBuff);
                     if (autoBuy && !buffActive) {
                         // Buy upgrades
                         if (autoBuyUpgrades) {
@@ -11038,7 +11038,7 @@ function clickShimmers() {
     })
 }
 
-function checkBuff(buffActive) {
+function checkBuff(buffActive, stopOnBuff) {
     if (stopOnBuff) {
         let buffCrate = $("#buffs").find(".crate");
         if (buffCrate.length > 0) {

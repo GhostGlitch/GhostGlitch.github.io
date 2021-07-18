@@ -10941,32 +10941,32 @@ var __webpack_exports__ = {};
     $(document).ready(function () {
         setTimeout(function () {
             // Turn on extension
-            let autoPlayerEnabled = true;
-            let autoPlayerDelay = 200
+            var autoPlayerEnabled = true;
+            var autoPlayerDelay = 200
 
             // Set autoClicker to true
-            let autoClickerEnabled = true;
-            let autoClickerDelay = 10;
+            var autoClickerEnabled = true;
+            var autoClickerDelay = 10;
 
             // Set auto click shimmers to true
-            let autoClickShimmers = true;
+            var autoClickShimmers = true;
 
             // Set global auto-buy to true
-            let autoBuy = true;
+            var autoBuy = true;
 
             // Set specific auto-buy to true    
-            let autoBuyUpgrades = true;
-            let autoBuyProducts = true;
+            var autoBuyUpgrades = true;
+            var autoBuyProducts = true;
 
             // Set stop on buff to false
-            let stopOnBuff = false;
-            let buffActive = false;
+            var stopOnBuff = false;
+            var buffActive = false;
 
             // Set console notifications to true
-            let notifications = true;
+            var notifications = true;
 
             //set Kill Wrinklers to true
-            let autoKillWrinklers = true
+            var autoKillWrinklers = true
 
             // Trigger help function from console
             help = help;
@@ -10999,7 +10999,7 @@ var __webpack_exports__ = {};
                         clickShimmers();
                     }
                     // Check if buff is finished and resume auto-buy
-                    buffActive = checkBuff(buffActive);
+                    buffActive = checkBuff(buffActive, stopOnBuff);
                     if (autoBuy && !buffActive) {
                         // Buy upgrades
                         if (autoBuyUpgrades) {
@@ -11038,7 +11038,7 @@ function clickShimmers() {
     })
 }
 
-function checkBuff(buffActive) {
+function checkBuff(buffActive, stopOnBuff) {
     if (stopOnBuff) {
         let buffCrate = $("#buffs").find(".crate");
         if (buffCrate.length > 0) {
