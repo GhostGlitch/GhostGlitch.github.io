@@ -10961,7 +10961,7 @@ var __webpack_exports__ = {};
         
             // Set stop on buff to false
             window.stopOnBuff = false;
-            buffActive = false;
+            let buffActive = false;
         
             // Set console notifications to true
             window.notifications = true;
