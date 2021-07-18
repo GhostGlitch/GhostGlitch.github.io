@@ -10962,7 +10962,7 @@ var buffActive = false;
 var notifications = true;
 
 //set Kill Wrinklers to true
-var autoKillWrinklers = true
+var autoKillWrinklers = true;
 (function () {
     $(document).ready(function () {
         setTimeout(function () {
