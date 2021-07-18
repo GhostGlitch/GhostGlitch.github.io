@@ -10961,7 +10961,7 @@ var __webpack_exports__ = {};
         
             // Set stop on buff to false
             window.stopOnBuff = false;
-            window.buffActive = false;
+            buffActive = false;
         
             // Set console notifications to true
             window.notifications = true;
@@ -11000,8 +11000,8 @@ var __webpack_exports__ = {};
                         clickShimmers();
                     }
                     // Check if buff is finished and resume auto-buy
-                    window.buffActive = checkBuff(window.buffActive, window.stopOnBuff);
-                    if (window.autoBuy && !window.buffActive) {
+                    buffActive = checkBuff(buffActive);
+                    if (window.autoBuy && !buffActive) {
                         // Buy upgrades
                         if (window.autoBuyUpgrades) {
                             buyUpgrade();
@@ -11039,28 +11039,28 @@ function clickShimmers() {
     })
 }
 
-function checkBuff(buffActive, stopOnBuff) {
-    if (stopOnBuff) {
+function checkBuff(active) {
+    if (window.stopOnBuff) {
         let buffCrate = $("#buffs").find(".crate");
         if (buffCrate.length > 0) {
-            buffActive = true;
+            active = true;
 
             if (window.notifications) {
                 console.log("Auto-buy temporarily disabled during buff!");
             }
         }
     }
-    if (buffActive) {
+    if (active) {
         let buffCrate = $("#buffs").find(".crate");
         if (buffCrate.length == 0) {
-            buffActive = false;
+            active = false;
 
             if (window.notifications) {
                 console.log("Auto-buy enabled again!");
             }
         }
     }
-    return buffActive
+    return active
 }
 
 function buyUpgrade() {
